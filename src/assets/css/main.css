@@ -1,0 +1,23 @@
+.pres-content {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.content-container {
+    width: 70%;
+}
+
+.content-container * {
+    margin: 10px 0;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.button-container button {
+    height: 5vh;
+}

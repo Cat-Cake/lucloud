@@ -1,0 +1,44 @@
+header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 7vh;
+}
+
+nav ul {
+    display: flex;
+}
+
+ul li {
+    list-style-type: none;
+    margin: 0 15px;
+}
+
+.btn {
+    width: 13vw;
+    height: 4.5vh;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-connexion {
+    background-color: #337bfe;
+    color: #fdfeff;
+    border-color: #337bfe;
+}
+
+.btn-register {
+    background-color: #fdfeff;
+    border-color: #337bfe;
+}
+
+.btn-connexion:hover {
+    background-color: #fdfeff;
+    color: #3f4040;
+    border-color: #337bfe;
+}
+
+.btn-register:hover {
+    background-color: #337bfe;
+    color: #fdfeff;
+}
