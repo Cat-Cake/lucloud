@@ -4,28 +4,75 @@ import Footer from "./Coponents/Footer";
 
 function Home() {
     return (
-        <section className="home">
+        <main className="home">
             <Header />
-            <div className='pres'>
+            <article className='pres'>
                 <div className='pres-content try'>
                     <div className='content-container'>
-                        <h1>Service de <span>Cloud simple</span> et <span>rapide</span></h1>
+                        <header>
+                            <h2>Service de <span>Cloud simple</span> et <span>rapide</span></h2>
+                        </header>
                         <p>Lu<span>Cloud</span> est un service de Cloud <span>gratuit</span> et <span>simple</span> à
                             utiliser tout en étant <span>rapide</span> à mettre en place !
                         </p>
                         <p>Stocker vos fichier et retrouvez sur vos téléphones,
                             tablette ou ordinateur.
                         </p>
+                        <footer className='button-container'>
+                            <button className='btn-full'>Essayer maintenant</button>
+                            <button className='btn-empty'>Acceder au Cloud</button>
+                        </footer>
+                    </div>
+                </div>
+                <div className='pres-content cloud'>
+                    <img src="/girl _with_cloud.png" alt='Girl with cloud'/>
+                </div>
+            </article>
+            <div className="separation">
+                <p className="discover">Découvrir la suite !</p>
+                <a href="#secure"><img className="down-arrow" src="/arrow-down.png" alt='Down arrow'/></a>
+            </div>
+
+            <article id="secure" className="secure">
+                <div className='secure-content cloud'>
+                    <img src="/cloud_secure_files.png" alt='Girl with cloud'/>
+                </div>
+                <div className="pres-content try">
+                    <div className='secure-content-container'>
+                        <h2>Fichier <span>stocké</span> et <span>sécurisé</span></h2>
+                        <p>Grace à Lu<span>Cloud</span> vous pourrez <span>stocker</span> vos fichiers avec <span>simplicité</span>.
+                        </p>
+                        <p>Stocker vos fichier et retrouvez sur vos téléphones,
+                            tablette ou ordinateur.
+                        </p>
                         <div className='button-container'>
-                            <button className=''>Essayer maintenant</button>
-                            <button className=''>Acceder au Cloud</button>
+                            <button className='btn-full'>Essayer maintenant</button>
+                            <button className='btn-empty'>Acceder au Cloud</button>
                         </div>
                     </div>
                 </div>
-                <div className='pres-content cloud'></div>
-            </div>
+            </article>
+            <section className="reassurance">
+                <header className="reassurance-title">
+                    <h2>Les <span>avantages</span> du stockage en ligne chez Lu<span>Cloud</span> ?</h2>
+                </header>
+                <div className="reassurance-pictures-container">
+                    <div className="img-container">
+                        <img className="reassurance-picture" src="/pig_price_zero.png" alt='Price is zero'/>
+                        <div className="text-container">
+                            <p>C'est gratuit alors pourquoi ne pas essayer !</p>
+                        </div>
+                    </div>
+                    <div className="img-container">
+                        <img className="reassurance-picture" src="/men-data-shield.png" alt='Data private'/>
+                        <div className="text-container">
+                            <p>Nus accordons une très grande importance envers la sécurisation de vos données.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
             <Footer />
-        </section>
+        </main>
     );
 }
 

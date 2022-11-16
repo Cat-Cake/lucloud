@@ -1,11 +1,13 @@
 function Header() {
     return (
-        <header>
-            <h2>Lu<span>Cloud</span></h2>
+        <header className="website-header">
+            <div>
+                <p className="band-title">Lu<span>Cloud</span></p>
+            </div>
             <nav>
                 <ul>
-                    <li><a href={`registration`}><button className="btn btn-register">S'inscrire</button></a></li>
-                    <li><a href={`connexion`}><button className="btn btn-connexion">Se connecter</button></a></li>
+                    <li><a href={`connexion`}>Se connecter</a></li>
+                    <li><a href={`registration`}><button className="btn btn-full">S'inscrire</button></a></li>
                 </ul>
             </nav>
         </header>

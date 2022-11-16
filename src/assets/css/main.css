@@ -2,13 +2,25 @@
     width: 50%;
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    margin-top: 5rem;
 }
 
 .content-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     width: 70%;
 }
 
-.content-container * {
+.secure-content-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 70%;
+}
+
+.content-container *, .secure-content-container * {
     margin: 10px 0;
 }
 
@@ -20,4 +32,69 @@
 
 .button-container button {
     height: 5vh;
+}
+
+.pres {
+    display: flex;
+}
+
+.try {
+    padding: var(--padding-side);
+}
+
+.cloud img {
+    width: 90%;
+    height: auto;
+}
+
+.separation {
+    text-align: center;
+}
+
+.down-arrow {
+    margin-top: 1rem;
+}
+
+.discover {
+    margin-top: 2rem;
+}
+
+.secure-content-container {
+    width: 100%;
+}
+
+.secure {
+    display: flex;
+}
+
+.reassurance {
+    margin-top: 5rem;
+}
+
+.reassurance-title {
+    display: flex;
+    justify-content: center;
+}
+
+.reassurance-pictures-container {
+    display: flex;
+    justify-content: space-around;
+    padding: var(--padding-side);
+    margin-top: 3rem;
+}
+
+.img-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.reassurance-picture {
+    width: 20rem;
+}
+
+.text-container {
+    width: 25rem;
+    margin-top: 2rem;
+    text-align: center;
 }

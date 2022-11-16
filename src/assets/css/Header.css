@@ -1,8 +1,23 @@
-header {
+.website-header {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     height: 7vh;
+    padding: 0 5rem;
+}
+
+.band-title {
+    font-weight: 700;
+    font-size: 35px;
+}
+
+ul {
+    display: flex;
+    align-items: center;
+}
+
+:root {
+    --padding-side: 0 5rem
 }
 
 nav ul {
@@ -11,34 +26,46 @@ nav ul {
 
 ul li {
     list-style-type: none;
+}
+
+ul li:first-child {
     margin: 0 15px;
 }
 
 .btn {
     width: 13vw;
     height: 4.5vh;
+}
+
+.btn-full, .btn-empty {
+    font-weight: 700;
     border-radius: 5px;
     cursor: pointer;
 }
 
-.btn-connexion {
+.btn-full {
     background-color: #337bfe;
     color: #fdfeff;
-    border-color: #337bfe;
+    border: 2px solid #337bfe;
 }
 
-.btn-register {
+.btn-empty {
     background-color: #fdfeff;
-    border-color: #337bfe;
+    border: 2px solid #337bfe;
+    color: #337bfe;
 }
 
-.btn-connexion:hover {
+.btn-full:hover {
     background-color: #fdfeff;
-    color: #3f4040;
+    color: #337bfe;
     border-color: #337bfe;
 }
 
-.btn-register:hover {
+.btn-empty:hover {
     background-color: #337bfe;
     color: #fdfeff;
+}
+
+a {
+    text-decoration: none;
 }
