@@ -4,6 +4,8 @@ import './assets/css/Header.css';
 import './assets/default/default.css';
 import './assets/css/main.css';
 import './assets/css/btn-full.css';
+import './assets/css/btn-empty.css';
+import './assets/css/footer.css';
 import ReactDOM from "react-dom/client";
 import { collection, getDocs } from 'firebase/firestore';
 import { auth, db } from './config/firebaseConfig';

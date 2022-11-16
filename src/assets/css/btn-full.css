@@ -1,0 +1,17 @@
+.btn-full, .btn-empty {
+    font-weight: 700;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-full {
+    background-color: var(--blue);
+    color: var(--white);
+    border: 2px solid var(--blue);
+}
+
+.btn-full:hover {
+    background-color: var(--white);
+    color: var(--blue);
+    border-color: var(--blue);
+}

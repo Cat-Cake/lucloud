@@ -60,13 +60,13 @@ function Home() {
                     <div className="img-container">
                         <img className="reassurance-picture" src="/pig_price_zero.png" alt='Price is zero'/>
                         <div className="text-container">
-                            <p>C'est gratuit alors pourquoi ne pas essayer !</p>
+                            <p>C'est <span>gratuit</span> alors pourquoi ne pas essayer !</p>
                         </div>
                     </div>
                     <div className="img-container">
                         <img className="reassurance-picture" src="/men-data-shield.png" alt='Data private'/>
                         <div className="text-container">
-                            <p>Nus accordons une très grande importance envers la sécurisation de vos données.</p>
+                            <p>Nous accordons une très grande <span>importance</span> envers la <span>sécurisation</span> de vos <span>données</span>.</p>
                         </div>
                     </div>
                 </div>

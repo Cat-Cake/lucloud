@@ -1,6 +1,6 @@
 function Footer() {
     return (
-        <footer>
+        <footer className="website-footer">
             footer
         </footer>
     );

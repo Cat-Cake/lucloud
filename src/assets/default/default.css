@@ -7,8 +7,15 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+:root {
+    --padding-side: 0 5rem;
+    --white: #fdfeff;
+    --blue: #337bfe;
+    --dark: #3f4040;
+}
+
 span {
-    color: #337bfe;
+    color: var(--blue);
 }
 
 h1, h2 {
