@@ -1,7 +1,7 @@
 function Footer() {
     return (
         <footer className="website-footer">
-            <p>Copyrights LuCloud 2022 - Tout droits réservés</p>
+            <p>@Copyrights LuCloud 2022 - Tout droits réservés</p>
         </footer>
     );
 }

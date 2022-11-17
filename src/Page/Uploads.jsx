@@ -59,7 +59,7 @@ const Uploads = () => {
     const handelUpload = () => {
         const imageRef = ref(storage, `media/${acceptedFiles[0].path}`)
         uploadBytes(imageRef, acceptedFiles[0]).then(querysnapshot=> {
-            console.log('Fichier umploadé')
+            console.log('Fichier uploadé')
         })
     }
 
@@ -73,11 +73,11 @@ const Uploads = () => {
             )}
             <div {...getRootProps({style})}>
                 <input {...getInputProps()} />
-                <p>Drag 'n' drop some files here, or click to select files</p>
+                <p>Déposer vos fichier ou cliquez pour le sélectioner</p>
             </div>
             {thumb && (
                 <div>
-                    <button onClick={handelUpload}>Envoyer</button>
+                    <button className={'btn btn-full'} onClick={handelUpload}>Envoyer</button>
                 </div>
             )}
         </section>

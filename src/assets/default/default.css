@@ -38,6 +38,7 @@ a {
     color: var(--dark);
 }
 
-img {
-
+.error-code {
+    font-size: 40px;
+    font-weight: 700;
 }
