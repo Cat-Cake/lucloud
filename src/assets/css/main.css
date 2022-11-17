@@ -74,6 +74,7 @@
 .reassurance-title {
     display: flex;
     justify-content: center;
+    text-align: center;
 }
 
 .reassurance-pictures-container {
@@ -97,4 +98,37 @@
     width: 25rem;
     margin-top: 2rem;
     text-align: center;
+}
+
+@media screen and (max-width: 768px)
+{
+    .pres, .secure {
+        flex-direction: column;
+    }
+
+    .pres-content {
+        width: 100%;
+    }
+
+    .content-container {
+        width: 100%;
+    }
+
+    .secure-content {
+        display: flex;
+            align-items: center;
+    }
+
+    .cloud {
+        align-items: center;
+    }
+
+    .reassurance-pictures-container {
+        flex-wrap: wrap;
+    }
+
+    .img-container:first-child {
+        margin-bottom: 3rem;
+    }
+
 }

@@ -8,6 +8,7 @@ function Header() {
                 <ul>
                     <li><a href={`connexion`}>Se connecter</a></li>
                     <li><a href={`registration`}><button className="btn btn-full">S'inscrire</button></a></li>
+                    <li><img src="/" alt='Girl with cloud'/></li>
                 </ul>
             </nav>
         </header>

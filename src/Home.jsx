@@ -34,7 +34,7 @@ function Home() {
             </div>
 
             <article id="secure" className="secure">
-                <div className='secure-content cloud'>
+                <div className='pres-content cloud'>
                     <img src="/cloud_secure_files.png" alt='Girl with cloud'/>
                 </div>
                 <div className="pres-content try">
