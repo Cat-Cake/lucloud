@@ -1,3 +1,9 @@
+.btn {
+    border: var(--blue) solid 2px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 .btn-full, .btn-empty {
     font-weight: 700;
     border-radius: 5px;

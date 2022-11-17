@@ -6,12 +6,6 @@ function Home() {
     return (
         <main className="home">
             <Header />
-            <div className="modal-container">
-                <div className="modal modal-close">
-                    <a className="modal-menu modal-menu-connect" href={`connexion`}>Se connecter</a>
-                    <a className="modal-menu modal-menu-register" href={`registration`}>S'inscrire</a>
-            </div>
-            </div>
             <article className='pres'>
                 <div className='pres-content try'>
                     <div className='content-container'>

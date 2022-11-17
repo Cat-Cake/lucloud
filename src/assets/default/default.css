@@ -26,10 +26,14 @@ h2 {
     font-weight: bold;
 }
 
-p, button {
+p, button, .menu-connect {
     font-weight: 600;
 }
 
 .subtitle {
     font-weight: 400;
+}
+
+a {
+    color: var(--dark);
 }

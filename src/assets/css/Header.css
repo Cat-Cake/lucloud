@@ -39,8 +39,7 @@ ul li:first-child {
 }
 
 .btn {
-    width: 13vw;
-    height: 4.5vh;
+    padding: 0.4rem 3rem;
 }
 
 a {

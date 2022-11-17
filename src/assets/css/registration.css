@@ -59,17 +59,22 @@
 }
 
 .register-with-other {
+    width: 100%;
     display: flex;
     justify-content: center;
     margin-top: 2rem;
 }
 
-.button-container {
+.register-with-other .connect-with-other:last-child {
+    margin-left: 2rem;
+}
+
+.register-button-container {
     display: flex;
     align-items: center;
     margin-top: 2rem;
 }
 
-.button-container button {
-    width: 20%;
+.submit {
+    padding: 0 1rem;
 }
