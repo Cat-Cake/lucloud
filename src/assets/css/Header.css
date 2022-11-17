@@ -1,9 +1,19 @@
 .website-header {
+    width: 100%;
     display: flex;
+    position: fixed;
+    top: 0;
     justify-content: space-between;
     align-items: center;
     height: 7vh;
     padding: 0 5rem;
+    z-index: 5000;
+    background-color: var(--white);
+}
+
+.modal-container {
+    display: flex;
+    justify-content: center;
 }
 
 .band-title {
@@ -35,4 +45,23 @@ ul li:first-child {
 
 a {
     text-decoration: none;
+}
+
+.menu-burger {
+    display: none;
+}
+
+@media screen and (max-width: 768px)
+{
+    .menu-burger {
+        display: block;
+    }
+
+    .menu-connect {
+        display: none;
+    }
+
+    .menu-register {
+        display: none;
+    }
 }
