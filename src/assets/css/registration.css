@@ -1,0 +1,75 @@
+.registration-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.profil-user-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profil-user-container:first-child {
+    margin-bottom: 2rem;
+}
+
+.picture-user-connexion {
+    margin-bottom: 2rem;
+}
+
+.picture-user-connexion {
+    width: 10rem;
+    height: auto;
+}
+
+.register-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-user-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.form-label-container {
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+}
+
+.form-content-container:first-child {
+
+}
+
+.form-content-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.form-label-container:last-child {
+    margin-left: 4rem;
+}
+
+.register-with-other {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.button-container {
+    display: flex;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.button-container button {
+    width: 20%;
+}

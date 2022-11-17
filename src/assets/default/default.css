@@ -29,3 +29,7 @@ h2 {
 p, button {
     font-weight: 600;
 }
+
+.subtitle {
+    font-weight: 400;
+}
