@@ -14,11 +14,11 @@ function Registration() {
                         <div className="form-content-container">
                             <div className="form-label-container">
                                 <label htmlFor="email">Email :</label>
-                                <input name="email"/>
+                                <input placeholder="example@email.com" name="email"/>
                             </div>
                             <div className="form-label-container">
                                 <label htmlFor="password">Password :</label>
-                                <input name="password" autoComplete="false"/>
+                                <input placeholder="ExamplePassword@123" name="password" autoComplete="false"/>
                             </div>
                         </div>
                         <div className="register-with-other">

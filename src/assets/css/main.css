@@ -131,4 +131,8 @@
         margin-bottom: 3rem;
     }
 
+    h2, p {
+        text-align: center;
+    }
+
 }
