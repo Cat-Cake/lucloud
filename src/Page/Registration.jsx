@@ -2,17 +2,19 @@ import Header from "../Coponents/Header";
 import { useFormik } from 'formik';
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../config/firebaseConfig';
-import { AuthContext } from '../context/AuthContext'
+import {useNavigate} from "react-router-dom";
 
 function Registration() {
 
+    const navigate = useNavigate();
+
     const onSubmit = (values) => {
         const { email, password } = values;
-        // fonction firebase qui permet d'authenfier un utilisateur avec son email et son mot de passe
         createUserWithEmailAndPassword(auth, email, password)
-            .then((userCred) => {
-                // On appelle la fn login du context qui permet de changer le state partagé dans le context (isLogged)
-                AuthContext.register();
+            .then((userCredential) => {
+                const user = userCredential.user;
+                console.log(user)
+                navigate('/personnal-space')
             })
             .catch((e) => {
                 console.log(e.message);

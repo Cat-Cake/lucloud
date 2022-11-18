@@ -66,17 +66,13 @@ function App() {
     const login = () => {
         setIsLogged(true);
     };
+
     const logout = () => {
         signOut(auth).then(() => {
             setIsLogged(false);
         });
     };
 
-    console.log(isLogged);
-
-    useEffect(() => {
-        console.log(isLogged);
-    }, [isLogged]);
 
   return (
     <RouterProvider router={route} />

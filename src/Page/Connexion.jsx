@@ -1,7 +1,7 @@
 import Header from "../Coponents/Header";
 import { useContext, useEffect } from 'react';
 import { useFormik } from 'formik';
-import { signInWithEmailAndPassword } from 'firebase/auth'
+import {onAuthStateChanged, signInWithEmailAndPassword} from 'firebase/auth'
 import { auth } from '../config/firebaseConfig';
 import { AuthContext } from '../context/AuthContext'
 import { useNavigate } from 'react-router-dom';
@@ -10,20 +10,23 @@ function Connexion() {
     const authContext = useContext(AuthContext);
 
     const navigate = useNavigate();
-    // use effect qui permet de faire la redirection en cas de changement du status de connexion d'un utilisateur
-    useEffect(() => {
-        if (AuthContext.isLogged) {
-            navigate('/private');
+
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            navigate('/personnal-space')
         } else {
-            navigate('/connexion');
+
         }
-    }, [AuthContext.isLogged]);
+    });
+
 
     const onSubmit = (values) => {
         const { email, password } = values;
         signInWithEmailAndPassword(auth, email, password)
-            .then((userCred) => {
-                navigate('/');
+            .then((userCredential) => {
+                const user = userCredential.user;
+                console.log(user)
+                navigate('/private')
             })
             .catch((e) => {
                 console.log(e.message);
