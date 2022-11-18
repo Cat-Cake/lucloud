@@ -1,6 +1,32 @@
 import Header from "../Coponents/Header";
+import { useFormik } from 'formik';
+import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { auth } from '../config/firebaseConfig';
+import { AuthContext } from '../context/AuthContext'
 
 function Registration() {
+
+    const onSubmit = (values) => {
+        const { email, password } = values;
+        // fonction firebase qui permet d'authenfier un utilisateur avec son email et son mot de passe
+        createUserWithEmailAndPassword(auth, email, password)
+            .then((userCred) => {
+                // On appelle la fn login du context qui permet de changer le state partagé dans le context (isLogged)
+                AuthContext.register();
+            })
+            .catch((e) => {
+                console.log(e.message);
+            });
+    };
+
+    const formik = useFormik({
+        initialValues: {
+            email: '',
+            password: '',
+        },
+        onSubmit,
+    });
+
     return (
         <main>
             <Header/>
@@ -10,15 +36,15 @@ function Registration() {
                     <p>Enregistrement</p>
                 </div>
                 <div className="form-user-container">
-                    <form className="register-form" method="post">
+                    <form className="register-form" method="post" onSubmit={formik.handleSubmit}>
                         <div className="form-content-container">
                             <div className="form-label-container">
                                 <label htmlFor="email">Email :</label>
-                                <input placeholder="example@email.com" name="email"/>
+                                <input placeholder="example@email.com" name="email" onChange={formik.handleChange} value={formik.values.email}/>
                             </div>
                             <div className="form-label-container">
                                 <label htmlFor="password">Password :</label>
-                                <input placeholder="ExamplePassword@123" name="password" autoComplete="false"/>
+                                <input type={"password"} placeholder="ExamplePassword@123" name="password" autoComplete="false" onChange={formik.handleChange} value={formik.values.password}/>
                             </div>
                         </div>
                         <div className="register-with-other">
