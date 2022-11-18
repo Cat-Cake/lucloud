@@ -1,4 +1,6 @@
 import React from "react";
+import { useEffect, useState } from 'react';
+import { signOut } from 'firebase/auth';
 import './assets/css/Header.css';
 import './assets/default/default.css';
 import './assets/css/main.css';
@@ -13,26 +15,21 @@ import './assets/css/registrationConnexion.css';
 import ReactDOM from "react-dom/client";
 import { collection, getDocs } from 'firebase/firestore';
 import { auth, db } from './config/firebaseConfig';
-
 import {
     createBrowserRouter,
     RouterProvider
 } from "react-router-dom";
-
 import Home from "./Home";
 import Connexion from "./Page/Connexion";
 import Registration from "./Page/Registration";
 import Uploads from "./Page/Uploads";
 import Page404 from "./Page/Page404";
 import PersonnalSpace from "./Page/PersonnalSpace";
+import Private from "./Page/Private";
 const route = createBrowserRouter([
     {
         path: "/",
         element: <Home />
-    },
-    {
-        path: "/connexion",
-        element: <Connexion />
     },
     {
         path: "/connexion",
@@ -51,12 +48,36 @@ const route = createBrowserRouter([
         element: <PersonnalSpace />
     },
     {
+        path: "/private",
+        element: <Private />
+    },
+    {
         path: "*",
         element: <Page404 />
     }
 ]);
 
 function App() {
+
+    const [tasks, setTasks] = useState([]);
+
+    const [isLogged, setIsLogged] = useState(false);
+
+    const login = () => {
+        setIsLogged(true);
+    };
+    const logout = () => {
+        signOut(auth).then(() => {
+            setIsLogged(false);
+        });
+    };
+
+    console.log(isLogged);
+
+    useEffect(() => {
+        console.log(isLogged);
+    }, [isLogged]);
+
   return (
     <RouterProvider router={route} />
   );

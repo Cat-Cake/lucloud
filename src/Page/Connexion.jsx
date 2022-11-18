@@ -1,18 +1,29 @@
 import Header from "../Coponents/Header";
+import { useContext, useEffect } from 'react';
 import { useFormik } from 'formik';
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../config/firebaseConfig';
 import { AuthContext } from '../context/AuthContext'
+import { useNavigate } from 'react-router-dom';
 
 function Connexion() {
+    const authContext = useContext(AuthContext);
+
+    const navigate = useNavigate();
+    // use effect qui permet de faire la redirection en cas de changement du status de connexion d'un utilisateur
+    useEffect(() => {
+        if (AuthContext.isLogged) {
+            navigate('/private');
+        } else {
+            navigate('/connexion');
+        }
+    }, [AuthContext.isLogged]);
 
     const onSubmit = (values) => {
         const { email, password } = values;
-        // fonction firebase qui permet d'authenfier un utilisateur avec son email et son mot de passe
         signInWithEmailAndPassword(auth, email, password)
             .then((userCred) => {
-                // On appelle la fn login du context qui permet de changer le state partagé dans le context (isLogged)
-                AuthContext.login();
+                navigate('/');
             })
             .catch((e) => {
                 console.log(e.message);
@@ -44,7 +55,7 @@ function Connexion() {
                             </div>
                             <div className="form-label-container">
                                 <label htmlFor="password">Password :</label>
-                                <input type={"password"} placeholder="ExamplePassword@123" name="password" autoComplete="false" autoComplete="false" onChange={formik.handleChange} value={formik.values.password}/>
+                                <input type={"password"} placeholder="ExamplePassword@123" name="password" autoComplete="false" onChange={formik.handleChange} value={formik.values.password}/>
                             </div>
                         </div>
                         <div className="register-with-other">
