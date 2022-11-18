@@ -11,9 +11,9 @@ function Header() {
             </div>
             <nav>
                 <ul>
-                    <li><a className="menu-connect" href={`connexion`}>Se connecter</a></li>
-                    <li><a className="menu-register" href={`registration`}><button className="btn btn-full">S'inscrire</button></a></li>
-                    <li onClick={menuOpening} ><img className="menu-burger" src="/menu.png" alt='Menu'/></li>
+                    <li><a className="menu menu-connect" href={`connexion`}>Se connecter</a></li>
+                    <li><a className="menu menu-register" href={`registration`}><button className="btn btn-full">S'inscrire</button></a></li>
+                    <li onClick={menuOpening} ><img className="menu menu-burger" src="/menu.png" alt='Menu'/></li>
                 </ul>
                 <div className="modal-container">
                     <div className="modal modal-close">
