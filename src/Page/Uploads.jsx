@@ -1,8 +1,9 @@
 import {useEffect, useMemo, useState} from 'react';
 import {useDropzone} from 'react-dropzone';
-import { ref, uploadBytes, updateMetadata } from 'firebase/storage';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { collection, addDoc } from 'firebase/firestore';
 import {storage} from "../config/firebaseConfig";
-import { auth } from '../config/firebaseConfig';
+import { auth, db } from '../config/firebaseConfig';
 
 const baseStyle = {
     flex: 1,
@@ -34,8 +35,6 @@ const rejectStyle = {
 
 const Uploads = () => {
 
-
-
     const {acceptedFiles, getRootProps, getInputProps, isFocused, isDragAccept, isDragReject} = useDropzone();
 
     const [thumb, setThumb] = useState(null)
@@ -62,26 +61,28 @@ const Uploads = () => {
 
         const metadata = {
             customMetadata: {
-                user: auth.currentUser
+                user: auth.currentUser.uid
             }
         };
-
-        updateMetadata(imageRef, metadata)
-            .then((metadata) => {
-                console.log(metadata)
-            }).catch((error) => {
-            console.log('error metadata unsuccess')
-        });
-
 
 
         uploadBytes(imageRef , acceptedFiles[0]).then(querysnapshot=> {
             console.log('Fichier uploadé')
+                getDownloadURL(querysnapshot.ref).then(url => {
+                    console.log(url)
+                    const uploadsImgByUser = collection(db, "uploadsImgByUser")
+                    addDoc(uploadsImgByUser, {
+                        image:url,
+                        userId: auth.currentUser.email
+                    }).then( () => {
+                        window.alert("enregistrement effectué")
+                    })
+                })
+
         })
     }
 
 
-    console.log(acceptedFiles[0])
     return (
         <section className="container">
             {thumb && (

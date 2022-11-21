@@ -3,9 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import Header from "../Coponents/Header";
 import '../assets/css/personnal-space.css';
 import HeaderConnect from "../Coponents/HeaderConnect";
+import {auth} from "../config/firebaseConfig";
 
 
 const PersonnalSpace = () => {
+
 
     const navigate = useNavigate();
 
@@ -34,6 +36,9 @@ const PersonnalSpace = () => {
               <button className="btn btn-full">PLus d'action</button>
               <a href={`upload`}>Téléversement</a>
           </article>
+          <section>
+
+          </section>
       </main>
   )
 }
