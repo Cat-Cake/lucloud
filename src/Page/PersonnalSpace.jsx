@@ -41,12 +41,15 @@ const PersonnalSpace = () => {
             });
 
             setTasks(tasksList);
-            console.log(auth.currentUser.email)
+            console.log(tasksList)
 
-            if (auth.currentUser.email == tasksList[0].userId) {
-                let userEmail = tasksList[0].userId
-                let sectionShowData = document.querySelector('.show-data-list')
-                sectionShowData.append(userEmail)
+            for (let i = 0; i < tasksList.length; i++) {
+                if (auth.currentUser.email == tasksList[i].userId) {
+                    let img = document.createElement('img')
+                    img.src = tasksList[i].image
+                    let sectionShowData = document.querySelector('.show-data-list')
+                    sectionShowData.append(img)
+                }
             }
 
         });
