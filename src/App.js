@@ -25,6 +25,7 @@ import './assets/css/upload.css';
 import './assets/css/Page404.css';
 import './assets/css/registrationConnexion.css';
 import './assets/js/headerContent';
+import {collection, getDocs} from "firebase/firestore";
 const route = createBrowserRouter([
     {
         path: "/",
@@ -71,6 +72,8 @@ function App() {
             setIsLogged(false);
         });
     };
+
+
 
 
   return (

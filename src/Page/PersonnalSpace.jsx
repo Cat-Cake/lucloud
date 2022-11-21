@@ -1,13 +1,16 @@
 import {getAuth, onAuthStateChanged, signOut} from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { collection, getDocs } from 'firebase/firestore';
 import Header from "../Coponents/Header";
 import '../assets/css/personnal-space.css';
 import HeaderConnect from "../Coponents/HeaderConnect";
-import {auth} from "../config/firebaseConfig";
+import {auth, db} from "../config/firebaseConfig";
+import { getStorage, ref, listAll } from "firebase/storage";
 
 
 const PersonnalSpace = () => {
-
+    const [tasks, setTasks] = useState([]);
 
     const navigate = useNavigate();
 
@@ -25,7 +28,31 @@ const PersonnalSpace = () => {
         });
     };
 
-  return (
+    useEffect(() => {
+        const tasksRef = collection(db, 'uploadsImgByUser');
+
+        getDocs(tasksRef).then((querySnapshot) => {
+            const tasksList = [];
+            querySnapshot.forEach((doc) => {
+                tasksList.push({
+                    id: doc.id,
+                    ...doc.data(),
+                });
+            });
+
+            setTasks(tasksList);
+            console.log(auth.currentUser.email)
+
+            if (auth.currentUser.email == tasksList[0].userId) {
+                let userEmail = tasksList[0].userId
+                let sectionShowData = document.querySelector('.show-data-list')
+                sectionShowData.append(userEmail)
+            }
+
+        });
+    }, []);
+
+    return (
       <main>
           <HeaderConnect/>
           <article className={"option-article"}>
@@ -36,7 +63,7 @@ const PersonnalSpace = () => {
               <button className="btn btn-full">PLus d'action</button>
               <a href={`upload`}>Téléversement</a>
           </article>
-          <section>
+          <section className={"show-data-list"}>
 
           </section>
       </main>
