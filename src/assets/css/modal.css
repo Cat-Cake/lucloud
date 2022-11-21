@@ -1,3 +1,31 @@
+.modal-perso {
+    width: 100%;
+    position: absolute;
+    background-color: var(--dark);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 3rem;
+    right: 0;
+}
+
+.modal-perso * {
+    margin: 2rem 0;
+}
+
+.modal-menu {
+    color: var(--white);
+}
+
+.modal-close {
+    display: none;
+}
+
+h2 {
+    font-size: 20px;
+}
+
 @media screen and (max-width: 768px)
 {
     .modal {

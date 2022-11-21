@@ -1,7 +1,8 @@
 import {useEffect, useMemo, useState} from 'react';
 import {useDropzone} from 'react-dropzone';
-import { ref, uploadBytes} from 'firebase/storage';
+import { ref, uploadBytes, updateMetadata } from 'firebase/storage';
 import {storage} from "../config/firebaseConfig";
+import { auth } from '../config/firebaseConfig';
 
 const baseStyle = {
     flex: 1,
@@ -58,10 +59,27 @@ const Uploads = () => {
 
     const handelUpload = () => {
         const imageRef = ref(storage, `media/${acceptedFiles[0].path}`)
-        uploadBytes(imageRef, acceptedFiles[0]).then(querysnapshot=> {
+
+        const metadata = {
+            customMetadata: {
+                user: auth.currentUser
+            }
+        };
+
+        updateMetadata(imageRef, metadata)
+            .then((metadata) => {
+                console.log(metadata)
+            }).catch((error) => {
+            console.log('error metadata unsuccess')
+        });
+
+
+
+        uploadBytes(imageRef , acceptedFiles[0]).then(querysnapshot=> {
             console.log('Fichier uploadé')
         })
     }
+
 
     console.log(acceptedFiles[0])
     return (

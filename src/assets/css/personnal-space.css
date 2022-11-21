@@ -1,0 +1,21 @@
+.option-article {
+    margin: 5rem 0;
+    padding: var(--padding-side);
+    display: flex;
+    width: 100%;
+    justify-content: right;
+    flex-wrap: wrap;
+}
+
+.check-all {
+    display: flex;
+    align-items: center;
+}
+
+.check-all:first-child, .check-all input:first-child {
+    margin: 0 1rem;
+}
+
+.option-article button:last-child {
+    margin-left: 1rem;
+}

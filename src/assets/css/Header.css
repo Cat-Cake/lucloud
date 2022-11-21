@@ -50,6 +50,16 @@ a {
     display: none;
 }
 
+.menu {
+    width: 50%;
+}
+
+.menu-container {
+    display: flex;
+    justify-content: end;
+    margin: 0px 0px;
+}
+
 @media screen and (max-width: 768px)
 {
     .menu-burger {
