@@ -19,3 +19,15 @@
 .option-article button:last-child {
     margin-left: 1rem;
 }
+
+.show-data-list {
+    display: flex;
+    justify-content: space-around;
+    padding: var(--padding-side);
+    flex-wrap: wrap;
+}
+
+.show-data-list img {
+    width: 20rem;
+    margin-top: 2rem;
+}
