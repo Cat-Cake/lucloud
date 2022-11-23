@@ -1,7 +1,7 @@
 import {getAuth, onAuthStateChanged, signOut} from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, query, where } from 'firebase/firestore';
 import Header from "../Coponents/Header";
 import '../assets/css/personnal-space.css';
 import HeaderConnect from "../Coponents/HeaderConnect";
@@ -10,7 +10,7 @@ import { getStorage, ref, listAll } from "firebase/storage";
 
 
 const PersonnalSpace = () => {
-    const [tasks, setTasks] = useState([]);
+    const [data, setData] = useState([]);
 
     const navigate = useNavigate();
 
@@ -29,30 +29,51 @@ const PersonnalSpace = () => {
     };
 
     useEffect(() => {
-        const tasksRef = collection(db, 'uploadsImgByUser');
-
-        getDocs(tasksRef).then((querySnapshot) => {
-            const tasksList = [];
+        // console.log(auth.currentUser)
+        // const tasksRef = collection(db, 'uploadsImgByUser');
+        const q = query(collection(db, "uploadsImgByUser"), where("userId", "==", auth.currentUser.email));
+        console.log(q)
+        getDocs(q).then(querySnapshot=> {
+            const payLoad = []
             querySnapshot.forEach((doc) => {
-                tasksList.push({
-                    id: doc.id,
-                    ...doc.data(),
-                });
+                // doc.data() is never undefined for query doc snapshots
+                // console.log(doc.id, " => ", doc.data());
+                // console.log(doc.data())
+                payLoad.push({
+                    id:doc.id,
+                    ...doc.data()
+                })
             });
+            setData(payLoad)
 
-            setTasks(tasksList);
-            console.log(tasksList)
+        }).catch(error=> {
+            console.log(error)
+        })
 
-            for (let i = 0; i < tasksList.length; i++) {
-                if (auth.currentUser.email == tasksList[i].userId) {
-                    let img = document.createElement('img')
-                    img.src = tasksList[i].image
-                    let sectionShowData = document.querySelector('.show-data-list')
-                    sectionShowData.append(img)
-                }
-            }
 
-        });
+
+        // getDocs(tasksRef).then((querySnapshot) => {
+        //     const tasksList = [];
+        //     querySnapshot.forEach((doc) => {
+        //         tasksList.push({
+        //             id: doc.id,
+        //             ...doc.data(),
+        //         });
+        //     });
+        //
+        //     setTasks(tasksList);
+        //     console.log(tasksList)
+        //
+        //     for (let i = 0; i < tasksList.length; i++) {
+        //         if (auth.currentUser.email == tasksList[i].userId) {
+        //             let img = document.createElement('img')
+        //             img.src = tasksList[i].image
+        //             let sectionShowData = document.querySelector('.show-data-list')
+        //             sectionShowData.append(img)
+        //         }
+        //     }
+        //
+        // });
     }, []);
 
     return (
@@ -67,7 +88,9 @@ const PersonnalSpace = () => {
               <a href={`upload`}><button className={"btn btn-full"}>Téléversement</button></a>
           </article>
           <section className={"show-data-list"}>
-
+              {data.map((payLoad) => (
+                  <img src={payLoad.image} />
+              ))}
           </section>
       </main>
   )
