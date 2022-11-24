@@ -72,7 +72,6 @@ const PersonnalSpace = () => {
         //             sectionShowData.append(img)
         //         }
         //     }
-        //
         // });
     }, []);
 
@@ -81,16 +80,18 @@ const PersonnalSpace = () => {
           <HeaderConnect/>
           <article className={"option-article"}>
               <div className={"check-all"}>
-                  <input type={"checkbox"} />
-                  <p>Tout cocher</p>
+                  {/*<input type={"checkbox"} />*/}
+                  {/*<p>Tout cocher</p>*/}
               </div>
               <button className="btn btn-full">PLus d'action</button>
               <a href={`upload`}><button className={"btn btn-full"}>Téléversement</button></a>
           </article>
           <section className={"show-data-list"}>
-              {data.map((payLoad) => (
-                  <img src={payLoad.image} />
-              ))}
+                  {data.map((payLoad) => (
+                      <card>
+                          <img src={payLoad.image} />
+                      </card>
+                  ))}
           </section>
       </main>
   )

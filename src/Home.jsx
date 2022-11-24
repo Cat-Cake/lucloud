@@ -15,7 +15,7 @@ function Home() {
                         <p>Lu<span>Cloud</span> est un service de Cloud <span>gratuit</span> et <span>simple</span> à
                             utiliser tout en étant <span>rapide</span> à mettre en place !
                         </p>
-                        <p>Stocker vos fichier et retrouvez sur vos téléphones,
+                        <p>Stockez vos fichiers et retrouvez les sur vos téléphones,
                             tablette ou ordinateur.</p>
                         <footer className='button-container'>
                             <button className='btn-full'>Essayer maintenant</button>

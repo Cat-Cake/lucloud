@@ -27,7 +27,12 @@
     flex-wrap: wrap;
 }
 
-.show-data-list img {
+.show-data-list card {
     width: 20rem;
+    margin-top: 2rem;
+}
+
+.show-data-list card img {
+    width: 60%;
     margin-top: 2rem;
 }
