@@ -1,12 +1,12 @@
 import {getAuth, onAuthStateChanged, signOut} from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import {useEffect, useRef, useState} from 'react';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import Header from "../Coponents/Header";
 import '../assets/css/personnal-space.css';
 import HeaderConnect from "../Coponents/HeaderConnect";
-import {auth, db} from "../config/firebaseConfig";
-import { getStorage, ref, listAll } from "firebase/storage";
+import {auth, db, storage} from "../config/firebaseConfig";
+import { getStorage, ref, listAll, getBlob } from "firebase/storage";
 
 
 const PersonnalSpace = () => {
@@ -28,11 +28,42 @@ const PersonnalSpace = () => {
         });
     };
 
+    const [downloadLink, setDownloadLink] = useState(null);
+    const [media, setMedia] = useState([]);
+
+    const linkRef = useRef(null);
+
+    const downloadImage = (event) => {
+        const src = event.target.src;
+        const imgRef = ref(storage, src);
+
+        getBlob(imgRef)
+            .then((blob) => {
+                const bloblink = window.URL.createObjectURL(blob);
+                setDownloadLink(bloblink);
+            })
+            .catch((e) => {
+                // console.log(e.message);
+            });
+        console.log(src);
+    };
+
+    useEffect(() => {
+        if (downloadLink) {
+            linkRef.current.click();
+        }
+
+        return () => {
+            window.URL.revokeObjectURL(downloadLink)
+        };
+    }, [downloadLink]);
+
+
     useEffect(() => {
         // console.log(auth.currentUser)
         // const tasksRef = collection(db, 'uploadsImgByUser');
         const q = query(collection(db, "uploadsImgByUser"), where("userId", "==", auth.currentUser.email));
-        console.log(q)
+        // console.log(q)
         getDocs(q).then(querySnapshot=> {
             const payLoad = []
             querySnapshot.forEach((doc) => {
@@ -52,27 +83,7 @@ const PersonnalSpace = () => {
 
 
 
-        // getDocs(tasksRef).then((querySnapshot) => {
-        //     const tasksList = [];
-        //     querySnapshot.forEach((doc) => {
-        //         tasksList.push({
-        //             id: doc.id,
-        //             ...doc.data(),
-        //         });
-        //     });
-        //
-        //     setTasks(tasksList);
-        //     console.log(tasksList)
-        //
-        //     for (let i = 0; i < tasksList.length; i++) {
-        //         if (auth.currentUser.email == tasksList[i].userId) {
-        //             let img = document.createElement('img')
-        //             img.src = tasksList[i].image
-        //             let sectionShowData = document.querySelector('.show-data-list')
-        //             sectionShowData.append(img)
-        //         }
-        //     }
-        // });
+
     }, []);
 
     return (
@@ -90,6 +101,9 @@ const PersonnalSpace = () => {
                   {data.map((payLoad) => (
                       <card>
                           <img src={payLoad.image} />
+                          {downloadLink && (
+                              <a ref={linkRef} href={downloadLink}>Télécharger</a>
+                          )}
                       </card>
                   ))}
           </section>
